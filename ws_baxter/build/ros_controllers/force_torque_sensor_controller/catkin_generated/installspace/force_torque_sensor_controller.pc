@@ -1,0 +1,8 @@
+prefix=/home/visual-servoing/ros/ws_baxter/install
+
+Name: force_torque_sensor_controller
+Description: Description of force_torque_sensor_controller
+Version: 0.5.4
+Cflags: -I/home/visual-servoing/ros/ws_baxter/install/include
+Libs: -L/home/visual-servoing/ros/ws_baxter/install/lib -lforce_torque_sensor_controller
+Requires: controller_interface hardware_interface geometry_msgs realtime_tools

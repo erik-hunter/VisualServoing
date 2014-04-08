@@ -1,0 +1,7 @@
+set(_CATKIN_CURRENT_PACKAGE "position_controllers")
+set(position_controllers_MAINTAINER "Vijay Pradeep <vijay@hidof.com>, Dave Coleman <davetcoleman@gmail.com>")
+set(position_controllers_DEPRECATED "")
+set(position_controllers_VERSION "0.5.4")
+set(position_controllers_BUILD_DEPENDS "controller_interface" "forward_command_controller")
+set(position_controllers_RUN_DEPENDS "controller_interface" "forward_command_controller")
+set(position_controllers_BUILDTOOL_DEPENDS "catkin")

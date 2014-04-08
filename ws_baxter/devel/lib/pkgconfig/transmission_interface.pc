@@ -1,0 +1,8 @@
+prefix=/home/visual-servoing/ros/ws_baxter/devel
+
+Name: transmission_interface
+Description: Description of transmission_interface
+Version: 0.5.8
+Cflags: -I/home/visual-servoing/ros/ws_baxter/src/ros_control/transmission_interface/include -I/usr/include
+Libs: -L/home/visual-servoing/ros/ws_baxter/devel/lib -ltransmission_interface_parser -l:/usr/lib/libtinyxml.so
+Requires: 

@@ -1,0 +1,7 @@
+set(_CATKIN_CURRENT_PACKAGE "ros_controllers")
+set(ros_controllers_MAINTAINER "Wim Meeussen <wim@hidof.com>, Adolfo Rodriguez Tsouroukdissian <adolfo.rodriguez@pal-robotics.com>, Dave Coleman <davetcoleman@gmail.com>")
+set(ros_controllers_DEPRECATED "")
+set(ros_controllers_VERSION "0.5.4")
+set(ros_controllers_BUILD_DEPENDS )
+set(ros_controllers_RUN_DEPENDS "imu_sensor_controller" "force_torque_sensor_controller" "position_controllers" "velocity_controllers" "effort_controllers" "forward_command_controller" "joint_state_controller" "joint_trajectory_controller")
+set(ros_controllers_BUILDTOOL_DEPENDS "catkin")

@@ -1,0 +1,7 @@
+set(_CATKIN_CURRENT_PACKAGE "joint_limits_interface")
+set(joint_limits_interface_MAINTAINER "Adolfo Rodriguez Tsouroukdissian <adolfo.rodriguez@pal-robotics.com>")
+set(joint_limits_interface_DEPRECATED "")
+set(joint_limits_interface_VERSION "0.5.8")
+set(joint_limits_interface_BUILD_DEPENDS "rostest" "roscpp" "hardware_interface" "urdfdom")
+set(joint_limits_interface_RUN_DEPENDS "roscpp" "hardware_interface" "urdfdom")
+set(joint_limits_interface_BUILDTOOL_DEPENDS "catkin")

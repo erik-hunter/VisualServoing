@@ -1,0 +1,7 @@
+set(_CATKIN_CURRENT_PACKAGE "joint_mode_controller")
+set(joint_mode_controller_MAINTAINER "Dave Coleman <davetcoleman@gmail.com>")
+set(joint_mode_controller_DEPRECATED "")
+set(joint_mode_controller_VERSION "0.5.4")
+set(joint_mode_controller_BUILD_DEPENDS "controller_interface" "hardware_interface" "pluginlib" "roscpp")
+set(joint_mode_controller_RUN_DEPENDS "controller_interface" "hardware_interface" "pluginlib" "roscpp")
+set(joint_mode_controller_BUILDTOOL_DEPENDS "catkin")

@@ -1,0 +1,1 @@
+set(ORDERED_PATHS "/home/visual-servoing/ros/ws_baxter/devel/lib;/opt/ros/hydro/lib")

@@ -1,0 +1,7 @@
+set(_CATKIN_CURRENT_PACKAGE "controller_manager_msgs")
+set(controller_manager_msgs_MAINTAINER "Wim Meeussen <wim@hidof.com>")
+set(controller_manager_msgs_DEPRECATED "")
+set(controller_manager_msgs_VERSION "0.5.8")
+set(controller_manager_msgs_BUILD_DEPENDS "std_msgs" "message_generation")
+set(controller_manager_msgs_RUN_DEPENDS "std_msgs" "message_runtime")
+set(controller_manager_msgs_BUILDTOOL_DEPENDS "catkin")

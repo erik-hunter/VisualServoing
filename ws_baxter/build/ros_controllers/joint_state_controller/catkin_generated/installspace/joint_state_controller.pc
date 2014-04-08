@@ -1,0 +1,8 @@
+prefix=/home/visual-servoing/ros/ws_baxter/install
+
+Name: joint_state_controller
+Description: Description of joint_state_controller
+Version: 0.5.4
+Cflags: -I/home/visual-servoing/ros/ws_baxter/install/include
+Libs: -L/home/visual-servoing/ros/ws_baxter/install/lib -ljoint_state_controller
+Requires: realtime_tools roscpp hardware_interface pluginlib controller_interface sensor_msgs

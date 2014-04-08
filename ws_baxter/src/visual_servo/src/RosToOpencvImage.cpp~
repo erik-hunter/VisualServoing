@@ -1,0 +1,184 @@
+/* 
+
+   Andy McEvoy
+   michael.mcevoy@colorado.edu
+
+   12 - June - 2013
+
+   Converts a ROS image stream into an OpenCV image stream
+
+*/
+
+#include <ros/ros.h>
+#include <image_transport/image_transport.h>
+#include <cv_bridge/cv_bridge.h>
+#include <sensor_msgs/image_encodings.h>
+#include <opencv2/imgproc/imgproc.hpp>
+#include <opencv2/highgui/highgui.hpp>
+#include <stdlib.h>
+#include <visp/vpMbEdgeTracker.h>
+#include <visp/vpMeEllipse.h>
+#include <visp/vpKltOpencv.h>
+#include <visp/vpDisplayOpenCV.h>
+#include <visp/vpOpenCVGrabber.h>
+#include <visp/vpDot2.h>
+
+namespace enc = sensor_msgs::image_encodings;
+
+static const char WINDOW[] = "OpenCV Image";
+
+int global_min_threshold=50;
+int global_squareness_ratio=20;
+
+void update_global_min_threshold(int,void*) 
+{
+  	//do nothing
+}
+
+void update_global_squareness_ratio(int,void*) 
+{
+  	//do nothing
+}
+
+class ImageConverter
+{
+	bool tracking = false;
+  	ros::NodeHandle nh_;
+  	image_transport::ImageTransport it_;
+  	image_transport::Subscriber image_sub_;
+  	image_transport::Publisher image_pub_;
+  	
+  	vpMbEdgeTracker tracker;
+  	vpDisplayOpenCV *d;
+  	vpHomogeneousMatrix cMo;
+	vpCameraParameters cam;
+  	char* ros_image_stream;
+  	
+public:
+	ImageConverter(char* ros_img_stream)
+    : it_(nh_)
+	{
+		ros_image_stream = ros_img_stream;
+
+	
+    	image_pub_ = it_.advertise("correll_ros2opencv", 1);
+    	image_sub_ = it_.subscribe(ros_image_stream, 1, &ImageConverter::analyze_frame, this);
+	
+    	cv::namedWindow(WINDOW);
+  	}
+
+  	~ImageConverter()
+  	{
+    	cv::destroyWindow(WINDOW);
+  	}
+
+  	void analyze_frame(const sensor_msgs::ImageConstPtr& msg)
+  	{
+  		
+  	
+    	cv_bridge::CvImagePtr cv_ptr;
+    	try
+    	{
+			cv_ptr = cv_bridge::toCvCopy(msg, enc::BGR8);
+    	}
+    	catch (cv_bridge::Exception& e)
+    	{
+			ROS_ERROR("cv_bridge exception: %s", e.what());
+			return;
+    	}
+
+    	/* Add any OpenCV processing here */
+
+   		// end of processing
+   		if(!tracking)
+			trackCube(cv_ptr->image);
+    	
+    	//	Use this to get the first frame
+    	/*
+    	cv::waitKey(3);
+    	std::cout << "WRITING IMAGE" << std::endl;
+    	cv::imwrite("cubelets3_right_first_frame.png", cv_ptr->image);
+    	std::cout << "DONE WRITING IMAGE" << std::endl;
+    	exit(0);
+    	*/
+    	image_pub_.publish(cv_ptr->toImageMsg());
+  	}
+  	
+  	void init_the_edge_tracker(cv::Mat img)
+  	{
+		std::cout << "INITING" << std::endl;
+		
+		vpImage<unsigned char> I;
+		  	
+		vpImageConvert::convert(img, I);
+		d = new vpDisplayOpenCV(I);
+
+		vpDisplay::display(I);
+		std::cout << "INITING 2" << std::endl;
+		vpDisplay::flush(I);
+		std::cout << "INITING 3" << std::endl;
+  	
+  		vpMe me;
+		me.setMaskSize(8);
+		me.setMaskNumber(180);
+		me.setRange(8);
+		me.setThreshold(10000);
+		me.setMu1(0.1);
+		me.setMu2(0.9);
+		me.setSampleStep(1);
+		me.setNbTotalSample(2500);
+		tracker.setMovingEdge(me);
+		cam.initPersProjWithoutDistortion(839, 839, 325, 243);
+		tracker.setCameraParameters(cam);
+		tracker.setNearClippingDistance(0.01);
+		tracker.setFarClippingDistance(0.5);
+		tracker.setClipping(tracker.getClipping() | vpMbtPolygon::FOV_CLIPPING);
+		tracker.setDisplayFeatures(true);
+		tracker.setOgreVisibilityTest(false);
+		tracker.loadModel("cube.cao");
+		std::cout << "INITING 4" << std::endl;
+		tracker.initClick(I, "cube.init");
+		std::cout << "INITING 5" << std::endl;
+    	
+    	std::cout << "DONE INITING" << std::endl;
+  	}
+  	
+private:
+	void trackCube(cv::Mat frame)
+	{
+		
+		vpImage<unsigned char> I;
+				
+		vpImageConvert::convert(frame, I);
+		vpDisplay::display(I);
+		    
+		tracker.track(I);
+		tracker.getPose(cMo);
+		tracker.getCameraParameters(cam);
+		tracker.display(I, cMo, cam, vpColor::red, 2);
+		vpDisplay::displayFrame(I, cMo, cam, 0.025, vpColor::none, 3);
+		vpDisplay::flush(I);
+		if (vpDisplay::getClick(I, false))
+			exit(0);
+		
+    }
+};
+
+int main(int argc, char** argv)
+{
+  	if (argc==2) {
+  		std::cout << "STARTING TO GRAB IMAGES" << std::endl;
+  		
+  		
+    	ros::init(argc, argv, "correll_image_converter");
+    	ImageConverter ic(argv[1]);
+    	//	Init the tracker
+    	ic.init_the_edge_tracker(cv::imread("cubelets3_left_first_frame.png", CV_LOAD_IMAGE_COLOR)); 
+    	
+    	ros::spin();
+    	return 0;
+  	} else {
+    	std::cout<<"ERROR:\tusage - RosToOpencvImage <ros_image_topic>"<<std::endl;
+    	return 1;
+  	}
+}

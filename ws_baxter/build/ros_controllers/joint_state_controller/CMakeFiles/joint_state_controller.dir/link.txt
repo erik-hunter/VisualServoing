@@ -1,0 +1,1 @@
+/usr/bin/c++  -fPIC -fopenmp    -shared -Wl,-soname,libjoint_state_controller.so -o /home/visual-servoing/ros/ws_baxter/devel/lib/libjoint_state_controller.so CMakeFiles/joint_state_controller.dir/src/joint_state_controller.cpp.o 

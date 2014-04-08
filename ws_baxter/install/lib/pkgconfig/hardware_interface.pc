@@ -1,0 +1,8 @@
+prefix=/home/visual-servoing/ros/ws_baxter/install
+
+Name: hardware_interface
+Description: Description of hardware_interface
+Version: 0.5.8
+Cflags: -I/home/visual-servoing/ros/ws_baxter/install/include
+Libs: -L/home/visual-servoing/ros/ws_baxter/install/lib 
+Requires: roscpp

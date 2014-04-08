@@ -1,0 +1,8 @@
+prefix=/home/visual-servoing/ros/ws_baxter/devel
+
+Name: controller_manager
+Description: Description of controller_manager
+Version: 0.5.8
+Cflags: -I/home/visual-servoing/ros/ws_baxter/src/ros_control/controller_manager/include
+Libs: -L/home/visual-servoing/ros/ws_baxter/devel/lib -lcontroller_manager
+Requires: controller_interface controller_manager_msgs hardware_interface realtime_tools pluginlib

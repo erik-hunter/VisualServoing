@@ -1,0 +1,7 @@
+set(_CATKIN_CURRENT_PACKAGE "controller_manager_tests")
+set(controller_manager_tests_MAINTAINER "Vijay Pradeep <vijay@hidof.com>")
+set(controller_manager_tests_DEPRECATED "")
+set(controller_manager_tests_VERSION "0.5.8")
+set(controller_manager_tests_BUILD_DEPENDS "rostest" "control_toolbox" "controller_manager" "controller_interface")
+set(controller_manager_tests_RUN_DEPENDS "rostest" "control_toolbox" "controller_manager" "controller_interface")
+set(controller_manager_tests_BUILDTOOL_DEPENDS "catkin")

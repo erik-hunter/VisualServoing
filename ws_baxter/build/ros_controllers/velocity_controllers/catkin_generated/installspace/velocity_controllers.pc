@@ -1,0 +1,8 @@
+prefix=/home/visual-servoing/ros/ws_baxter/install
+
+Name: velocity_controllers
+Description: Description of velocity_controllers
+Version: 0.5.4
+Cflags: -I/home/visual-servoing/ros/ws_baxter/install/include
+Libs: -L/home/visual-servoing/ros/ws_baxter/install/lib -lvelocity_controllers
+Requires: controller_interface forward_command_controller control_toolbox realtime_tools

@@ -1,0 +1,79 @@
+#include <stdlib.h>
+#include <visp/vpMbEdgeTracker.h>
+#include <visp/vpMeEllipse.h>
+#include <visp/vpKltOpencv.h>
+#include <visp/vpDisplayOpenCV.h>
+#include <visp/vpOpenCVGrabber.h>
+#include <visp/vpDot2.h>
+//#include <visp/vpFeatureBuilder.h>
+//#include <visp/vpServo.h>
+//#include <visp/vpSimulatorCamera.h>
+
+int main(int argc, char** argv){
+    printf("A CHANGE");
+    int device = 0;
+    cv::VideoCapture cap(device);
+
+    cv::Mat frame;
+    cap >> frame;
+    
+    //vpImage<vpRGBa> I;
+    vpImage<unsigned char> I;
+    vpImageConvert::convert(frame, I);
+    vpDisplayOpenCV d(I);
+    vpHomogeneousMatrix cMo;
+    vpCameraParameters cam;
+
+    vpDisplay::display(I);
+    vpDisplay::flush(I);
+
+    vpMbEdgeTracker tracker;
+
+    vpMe me;
+    me.setMaskSize(5);
+    me.setMaskNumber(180);
+    me.setRange(8);
+    me.setThreshold(10000);
+    me.setMu1(0.5);
+    me.setMu2(0.5);
+    me.setSampleStep(4);
+    me.setNbTotalSample(250);
+    tracker.setMovingEdge(me);
+    cam.initPersProjWithoutDistortion(839, 839, 325, 243);
+    tracker.setCameraParameters(cam);
+    tracker.setNearClippingDistance(0.1);
+    tracker.setFarClippingDistance(100.0);
+    tracker.setClipping(tracker.getClipping() | vpMbtPolygon::FOV_CLIPPING);
+    tracker.setDisplayFeatures(true);
+    tracker.setOgreVisibilityTest(false);
+    tracker.setAngleAppear(70);
+    tracker.setAngleDisappear(80);
+    tracker.loadModel("teabox.cao");
+    //tracker.loadModel("teabox.wrl");
+    tracker.initClick(I, "teabox.init");
+
+
+    for(;;){
+        try {
+        cap >> frame;
+        vpImageConvert::convert(frame,I);
+        vpDisplay::display(I);
+
+        tracker.track(I);
+        tracker.getPose(cMo);
+        printf("DEBUG-----------------------------------\n");
+        cMo.print();
+        printf("END DEBUG-------------------------------\n");
+        tracker.getCameraParameters(cam);
+        tracker.display(I, cMo, cam, vpColor::red, 2);
+        vpDisplay::displayFrame(I, cMo, cam, 0.025, vpColor::none, 3);
+        vpDisplay::flush(I);
+        if (vpDisplay::getClick(I, false))
+            break;
+        }
+        catch(vpTrackingException){
+            printf("BLEHHHH");
+            return -1;
+        }
+    }
+}

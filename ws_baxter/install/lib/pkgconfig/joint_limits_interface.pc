@@ -1,0 +1,8 @@
+prefix=/home/visual-servoing/ros/ws_baxter/install
+
+Name: joint_limits_interface
+Description: Description of joint_limits_interface
+Version: 0.5.8
+Cflags: -I/home/visual-servoing/ros/ws_baxter/install/include
+Libs: -L/home/visual-servoing/ros/ws_baxter/install/lib 
+Requires: roscpp

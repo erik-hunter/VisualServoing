@@ -1,0 +1,7 @@
+set(_CATKIN_CURRENT_PACKAGE "visual_servo")
+set(visual_servo_MAINTAINER "visual-servoing <visual-servoing@todo.todo>")
+set(visual_servo_DEPRECATED "")
+set(visual_servo_VERSION "0.0.0")
+set(visual_servo_BUILD_DEPENDS "roscpp" "cv_bridge" "rospy" "std_msgs" "image_transport")
+set(visual_servo_RUN_DEPENDS "cv_bridge" "roscpp" "rospy" "std_msgs" "image_transport")
+set(visual_servo_BUILDTOOL_DEPENDS "catkin")

@@ -1,0 +1,7 @@
+set(_CATKIN_CURRENT_PACKAGE "force_torque_sensor_controller")
+set(force_torque_sensor_controller_MAINTAINER "Adolfo Rodriguez Tsouroukdissian <adolfo.rodriguez@pal-robotics.com>")
+set(force_torque_sensor_controller_DEPRECATED "")
+set(force_torque_sensor_controller_VERSION "0.5.4")
+set(force_torque_sensor_controller_BUILD_DEPENDS "realtime_tools" "roscpp" "hardware_interface" "pluginlib" "controller_interface" "geometry_msgs")
+set(force_torque_sensor_controller_RUN_DEPENDS "realtime_tools" "roscpp" "hardware_interface" "pluginlib" "controller_interface" "geometry_msgs")
+set(force_torque_sensor_controller_BUILDTOOL_DEPENDS "catkin")

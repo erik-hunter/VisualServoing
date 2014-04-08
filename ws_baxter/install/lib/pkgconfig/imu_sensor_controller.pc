@@ -1,0 +1,8 @@
+prefix=/home/visual-servoing/ros/ws_baxter/install
+
+Name: imu_sensor_controller
+Description: Description of imu_sensor_controller
+Version: 0.5.4
+Cflags: -I/home/visual-servoing/ros/ws_baxter/install/include
+Libs: -L/home/visual-servoing/ros/ws_baxter/install/lib -limu_sensor_controller
+Requires: controller_interface hardware_interface sensor_msgs realtime_tools

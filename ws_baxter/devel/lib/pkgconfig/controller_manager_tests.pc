@@ -1,0 +1,8 @@
+prefix=/home/visual-servoing/ros/ws_baxter/devel
+
+Name: controller_manager_tests
+Description: Description of controller_manager_tests
+Version: 0.5.8
+Cflags: -I/home/visual-servoing/ros/ws_baxter/src/ros_control/controller_manager_tests/include
+Libs: -L/home/visual-servoing/ros/ws_baxter/devel/lib -lcontroller_manager_tests
+Requires: controller_manager controller_interface control_toolbox

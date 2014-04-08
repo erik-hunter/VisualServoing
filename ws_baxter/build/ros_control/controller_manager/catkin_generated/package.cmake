@@ -1,0 +1,7 @@
+set(_CATKIN_CURRENT_PACKAGE "controller_manager")
+set(controller_manager_MAINTAINER "Wim Meeussen <wim@hidof.com>")
+set(controller_manager_DEPRECATED "")
+set(controller_manager_VERSION "0.5.8")
+set(controller_manager_BUILD_DEPENDS "controller_interface" "controller_manager_msgs" "hardware_interface" "realtime_tools" "pluginlib")
+set(controller_manager_RUN_DEPENDS "controller_interface" "controller_manager_msgs" "hardware_interface" "realtime_tools" "pluginlib")
+set(controller_manager_BUILDTOOL_DEPENDS "catkin")

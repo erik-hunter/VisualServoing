@@ -1,0 +1,7 @@
+set(_CATKIN_CURRENT_PACKAGE "velocity_controllers")
+set(velocity_controllers_MAINTAINER "Vijay Pradeep <vijay@hidof.com>")
+set(velocity_controllers_DEPRECATED "")
+set(velocity_controllers_VERSION "0.5.4")
+set(velocity_controllers_BUILD_DEPENDS "controller_interface" "forward_command_controller" "control_toolbox" "realtime_tools")
+set(velocity_controllers_RUN_DEPENDS "controller_interface" "forward_command_controller" "control_toolbox" "realtime_tools")
+set(velocity_controllers_BUILDTOOL_DEPENDS "catkin")

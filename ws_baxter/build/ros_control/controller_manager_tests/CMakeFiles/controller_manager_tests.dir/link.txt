@@ -1,0 +1,1 @@
+/usr/bin/c++  -fPIC -fopenmp    -shared -Wl,-soname,libcontroller_manager_tests.so -o /home/visual-servoing/ros/ws_baxter/devel/lib/libcontroller_manager_tests.so CMakeFiles/controller_manager_tests.dir/src/my_robot_hw.cpp.o CMakeFiles/controller_manager_tests.dir/src/effort_test_controller.cpp.o CMakeFiles/controller_manager_tests.dir/src/my_dummy_controller.cpp.o 

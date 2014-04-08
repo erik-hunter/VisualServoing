@@ -1,0 +1,7 @@
+set(_CATKIN_CURRENT_PACKAGE "controller_interface")
+set(controller_interface_MAINTAINER "Wim Meeussen <wim@hidof.com>")
+set(controller_interface_DEPRECATED "")
+set(controller_interface_VERSION "0.5.8")
+set(controller_interface_BUILD_DEPENDS "roscpp" "hardware_interface" "pluginlib")
+set(controller_interface_RUN_DEPENDS "roscpp" "hardware_interface" "pluginlib")
+set(controller_interface_BUILDTOOL_DEPENDS "catkin")

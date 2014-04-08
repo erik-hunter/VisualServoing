@@ -1,0 +1,8 @@
+prefix=/home/visual-servoing/ros/ws_baxter/install
+
+Name: baxter_scripts
+Description: Description of baxter_scripts
+Version: 0.3.0
+Cflags: 
+Libs: -L/home/visual-servoing/ros/ws_baxter/install/lib 
+Requires: 

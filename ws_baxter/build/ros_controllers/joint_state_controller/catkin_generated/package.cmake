@@ -1,0 +1,7 @@
+set(_CATKIN_CURRENT_PACKAGE "joint_state_controller")
+set(joint_state_controller_MAINTAINER "Wim Meeussen <wim@hidof.com>")
+set(joint_state_controller_DEPRECATED "")
+set(joint_state_controller_VERSION "0.5.4")
+set(joint_state_controller_BUILD_DEPENDS "realtime_tools" "roscpp" "hardware_interface" "pluginlib" "controller_interface" "sensor_msgs")
+set(joint_state_controller_RUN_DEPENDS "realtime_tools" "roscpp" "hardware_interface" "pluginlib" "controller_interface" "sensor_msgs")
+set(joint_state_controller_BUILDTOOL_DEPENDS "catkin")

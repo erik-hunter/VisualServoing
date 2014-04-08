@@ -1,0 +1,8 @@
+prefix=/home/visual-servoing/ros/ws_baxter/devel
+
+Name: controller_manager_msgs
+Description: Description of controller_manager_msgs
+Version: 0.5.8
+Cflags: -I/home/visual-servoing/ros/ws_baxter/devel/include
+Libs: -L/home/visual-servoing/ros/ws_baxter/devel/lib 
+Requires: std_msgs message_runtime

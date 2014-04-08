@@ -1,0 +1,1 @@
+/usr/bin/c++  -fPIC -fopenmp    -shared -Wl,-soname,libposition_controllers.so -o /home/visual-servoing/ros/ws_baxter/devel/lib/libposition_controllers.so CMakeFiles/position_controllers.dir/src/joint_position_controller.cpp.o 

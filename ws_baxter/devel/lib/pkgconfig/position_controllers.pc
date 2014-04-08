@@ -1,0 +1,8 @@
+prefix=/home/visual-servoing/ros/ws_baxter/devel
+
+Name: position_controllers
+Description: Description of position_controllers
+Version: 0.5.4
+Cflags: -I/home/visual-servoing/ros/ws_baxter/src/ros_controllers/position_controllers/include
+Libs: -L/home/visual-servoing/ros/ws_baxter/devel/lib -lposition_controllers
+Requires: controller_interface forward_command_controller
